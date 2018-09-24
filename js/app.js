@@ -95,38 +95,32 @@ console.log('invalid move');
 }
 };
 
-function won() {
-  reset();
-  console.log('You won!');
-}
+
 
 /** Check for collision between player and bugs */
 
-if (collision (player.x, player.y, 
-   // collision detected!
-}
-/** 
-function reset() {
-all enemies[];
-} 
-*/
-//** reset player to starting position if collision is detected  
-
+if (collision (player.x, player.y, player.width, 
+  player.height, this.x, this.y, this.width, this.height)) {
+  this.collision = true;
+  /** reset the player if there is a collision */
+  if (player) {
+      player.x = 202;
+      player.y = 400;
+  }
+ }    else  {
+      this.collision = false;
  
-/** var rect1 = {x: 5, y: 5, width: 50, height: 50}
-var rect2 = {x: 20, y: 10, width: 10, height: 10}
+}; 
 
-
-
-// filling in the values =>
-
-if (5 < 30 &&
-    55 > 20 &&
-    5 < 20 &&
-    55 > 10) {
-    // collision detected!
+function won () {
+  console.log('You won!');
 }
-**/
 
-// reset the player to beginning of board if hit by bugs
+function reset() {
+allEnemies = [];
+}
+ 
+function collision(player.x, player.y, player.height, player.width, enemy.x, enemy.y, enemy.height, enemy.width) {
+          return (Math.abs(player.x-enemy.x)* 2< player.width + enemy.width) && (Math.abs (player.y- enemy.y)* 2 < player.height* enemy.height);
+}
  
