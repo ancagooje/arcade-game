@@ -9,19 +9,28 @@ var Enemy = function (x, y) {
 };
  
 
-/** I had a 1 on 1 student mentor session with Lloan Alas. Per his sugestion, I gave these values to the enemies to 
- * make sure they appear from outside the board.  */
-var enemy1 = new Enemy(-90, 60);
-var enemy2 = new Enemy(-190, 140);
-var enemy3 = new Enemy(-290, 230);
-
-let allEnemies = [enemy1, enemy2, enemy3];
+ 
 
 Enemy.prototype.update = function (dt) {
-  this.x += 1;
+  this.x += 150 * dt;
   if (this.x > 500) {
     this.x = -100;
     }
+
+  /** Check for collision between player and bugs */
+
+if (collision (player.x, player.y, player.width, player.height, this.x, this.y, this.width, this.height)) {
+  this.collision = true;
+  /** reset the player if there is a collision */
+  if (player) {
+      player.x = 202;
+      player.y = 400;
+  }
+ }    else  {
+      this.collision = false;
+ 
+} 
+  
 };
      
 
@@ -52,19 +61,7 @@ Player.prototype.render = function() {
  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
  
-  var player = new Player();
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. No need to modify this.
-document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
-    };
-
-    player.handleInput(allowedKeys[e.keyCode]);
-});
+ 
 
 
 Player.prototype.handleInput = function(dt) {
@@ -97,22 +94,10 @@ console.log('invalid move');
 
 
 
-/** Check for collision between player and bugs */
-
-if (collision (player.x, player.y, player.width, 
-  player.height, this.x, this.y, this.width, this.height)) {
-  this.collision = true;
-  /** reset the player if there is a collision */
-  if (player) {
-      player.x = 202;
-      player.y = 400;
-  }
- }    else  {
-      this.collision = false;
  
-}; 
 
 function won () {
+  reset();
   console.log('You won!');
 }
 
@@ -120,7 +105,33 @@ function reset() {
 allEnemies = [];
 }
  
-function collision(player.x, player.y, player.height, player.width, enemy.x, enemy.y, enemy.height, enemy.width) {
-          return (Math.abs(player.x-enemy.x)* 2< player.width + enemy.width) && (Math.abs (player.y- enemy.y)* 2 < player.height* enemy.height);
+/** I watched the webinar of Lloan Alas on Arcade game and was inspired by his solution for collision detection: https://www.youtube.com/watch?v=oz7pHJ65TEk&feature=youtu.be */
+function collision(px, py, pw, ph, ex, ey, ew, eh) {
+          return (Math.abs(px -ex)*2 <pw +ew) && (Math.abs(py -ey)*2 < ph + eh);
 }
+ 
+const player = new Player();
+// This listens for key presses and sends the keys to your
+// Player.handleInput() method. No need to modify this.
+document.addEventListener('keyup', function(e) {
+    var allowedKeys = {
+        37: 'left',
+        38: 'up',
+        39: 'right',
+        40: 'down'
+    };
+
+    player.handleInput(allowedKeys[e.keyCode]);
+});
+
+ 
+
+/** I had a 1 on 1 student mentor session with Lloan Alas. Per his sugestion, I gave these values to the enemies to 
+ * make sure they appear from outside the board.  */
+var enemy1 = new Enemy(-90, 60);
+var enemy2 = new Enemy(-190, 140);
+var enemy3 = new Enemy(-290, 230);
+
+let allEnemies = [enemy1, enemy2, enemy3];
+
  
