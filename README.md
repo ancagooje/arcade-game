@@ -1,6 +1,12 @@
-frontend-nanodegree-arcade-game
-===============================
-
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
-
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+ Arcade game
+ ##Installation
+ Please clone or download this repo. Double click on index.html file, which will open the game in the browser.Time to play!
+ ##How to play
+ Your pink audacious player needs to get to the river! Use the arrows controls (up, down, left & right) to evade the nasty bugs and win the game. Beware, if the bugs touch the player, it resets your progress to the beginning of the journey.
+ ##Resources
+ I have used several resources for general inspiration:
+ I read this for getting the board to display: https://discussions.udacity.com/t/i-dont-understand-how-to-code-classic-arcade-game/527836/2?u=solittletime
+ I consulted Matthew Cranford's tutorials as general resource: https://matthewcranford.com/arcade-game-walkthrough-part-1-starter-code-breakdown/
+ https://www.youtube.com/watch?v=oz7pHJ65TEk&feature=youtu.be The webinar of Lloan Alas for collision detection
+ I also had a 1 on 1 session with Lloan Alas for debugging some details of my game. I quoted what bit he helped me with in the app.js file.
+ ##Thank you for taking the time to review my game!
